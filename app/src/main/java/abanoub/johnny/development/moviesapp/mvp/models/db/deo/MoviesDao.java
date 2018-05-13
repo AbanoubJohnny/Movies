@@ -26,10 +26,13 @@ public interface MoviesDao {
     int getCount();
 
     @Query("SELECT * FROM Movie WHERE original_title LIKE :search ")
-    public List<MovieDetails> findBranchesWithName(String search);
+    public List<MovieDetails> findMovieWithName(String search);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertAll( List<MovieDetails> movies);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insert(MovieDetails movie);
 
     @Delete
     void delete(MovieDetails movie);

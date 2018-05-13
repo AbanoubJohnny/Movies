@@ -7,6 +7,7 @@ import android.os.Handler;
 
 import abanoub.johnny.development.moviesapp.R;
 import abanoub.johnny.development.moviesapp.application.dagger.components.ApplicationComponent;
+import abanoub.johnny.development.moviesapp.modules.home.mvp.HomeActivity;
 import abanoub.johnny.development.moviesapp.modules.splash.dagger.DaggerSplashComponent;
 import abanoub.johnny.development.moviesapp.modules.splash.dagger.SplashComponent;
 import abanoub.johnny.development.moviesapp.modules.splash.dagger.SplashModule;
@@ -52,6 +53,6 @@ public class SplashActivity extends BaseActivity<SplashPresenter,SplashViewModel
     @Override
     public void goTOHomePage() {
 
-//        startActivityWithFinish(HomeScreenActivity.class);
+        startActivityWithFinish(HomeActivity.class);
     }
 }

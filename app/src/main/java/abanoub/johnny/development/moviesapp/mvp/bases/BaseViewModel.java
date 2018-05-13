@@ -5,19 +5,19 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
+import javax.inject.Inject;
+
 import abanoub.johnny.development.moviesapp.application.app.MyApplication;
 import abanoub.johnny.development.moviesapp.application.dagger.Injector;
 import abanoub.johnny.development.moviesapp.mvp.models.db.AppDatabase;
 import abanoub.johnny.development.moviesapp.mvp.models.local.SharedPreferencesUtils;
 
-import javax.inject.Inject;
-
-public abstract class BaseViewModel<I extends ICommonIneractor,CR extends ICommonRepository> extends ViewModel implements IViewModel, LifecycleObserver {
+public abstract class BaseViewModel<I extends ICommonIneractor,C extends ICommonRepository> extends ViewModel implements IViewModel, LifecycleObserver {
 
     @Inject
     protected I mInteractor;
     @Inject
-    protected CR mRepository;
+    protected C mRepository;
 
     private final MutableLiveData<String> messages = new MutableLiveData<>();
     private final MutableLiveData<Boolean> isShowingLoading = new MutableLiveData<>();
@@ -54,22 +54,11 @@ public abstract class BaseViewModel<I extends ICommonIneractor,CR extends ICommo
     public SharedPreferencesUtils sharedPreferencesUtils() {
         return Injector.INSTANCE.getAppComponent().exposeLocalDataSource().getSharedPreferences();
     }
-
-    @Override
-    public void setInteractor(Object interactor){
-        mInteractor = (I) interactor;
-    }
-
-    @Override
-    public void setRepository(Object repository){
-        mRepository = (CR) repository ;
-    }
-
     protected I getInteractor() {
         return mInteractor;
     }
 
-    protected CR getRepository() {
+    protected C getRepository() {
         return mRepository;
     }
 

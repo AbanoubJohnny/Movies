@@ -18,7 +18,4 @@ public interface IViewModel{
 
     LiveData<String> getMessages();
 
-    void setInteractor(Object interactor);
-
-    void setRepository(Object repository);
 }

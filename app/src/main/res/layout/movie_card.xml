@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/tw__transparent"
+    android:layout_margin="@dimen/mrg_5">
+
+
+    <ImageView
+        android:id="@+id/movie_image"
+        android:layout_width="@dimen/mrg_130"
+        android:layout_height="@dimen/mrg_80"
+        android:scaleType="center"/>
+    <LinearLayout
+        android:layout_width="@dimen/mrg_130"
+        android:layout_height="@dimen/mrg_80"
+        android:background="@drawable/white_bottom_rounded_background"
+        android:layout_below="@id/movie_image"
+        android:padding="@dimen/mrg_5"
+        android:orientation="vertical">
+        <abanoub.johnny.development.moviesapp.utils.customeviews.autofittextview.BoldAutofittextview
+            android:id="@+id/movie_name_textview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_12"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:lines="1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <abanoub.johnny.development.moviesapp.utils.customeviews.textview.BoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/text_12"
+                android:textColor="@color/black"
+                android:text="@string/rate_title"
+                android:gravity="start|center_vertical"
+                android:lines="1"/>
+
+
+            <abanoub.johnny.development.moviesapp.utils.customeviews.textview.RegularTextView
+                android:id="@+id/movie_rate_textview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/text_11"
+                android:layout_marginStart="@dimen/mrg_5"
+                android:textColor="@color/text_grey"
+                android:gravity="center|center_vertical"
+                android:lines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <abanoub.johnny.development.moviesapp.utils.customeviews.textview.BoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="start|center_vertical"
+                android:textSize="@dimen/text_12"
+                android:textColor="@color/black"
+                android:text="@string/date_title"
+                android:lines="1"/>
+
+            <abanoub.johnny.development.moviesapp.utils.customeviews.textview.RegularTextView
+                android:id="@+id/movie_date_textview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/mrg_5"
+                android:textSize="@dimen/text_11"
+                android:textColor="@color/text_grey"
+                android:gravity="center|center_vertical"
+                android:lines="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

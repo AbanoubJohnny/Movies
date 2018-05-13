@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
 
-import abanoub.johnny.development.moviesapp.utils.events.NetworkSpeedObserver;
 import com.facebook.network.connectionclass.ConnectionClassManager;
 import com.facebook.network.connectionclass.ConnectionQuality;
 import com.facebook.network.connectionclass.DeviceBandwidthSampler;
@@ -16,6 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+
+import abanoub.johnny.development.moviesapp.utils.events.NetworkSpeedObserver;
 
 /**
  * Created by Abanoub Maher on 10/29/17.
@@ -64,24 +65,28 @@ public class NetworkUtil {
     private static Runnable runnable ;
     private static final int delayMillisecons = 5000;
     private static NetworkSpeedObserver myNetworkSpeedObserver;
+    private static boolean isStartedAnalizing = false;
 
     public static void StartAnalizing(NetworkSpeedObserver networkSpeedObserver){
-        myNetworkSpeedObserver = networkSpeedObserver;
-        mConnectionClass = ConnectionQuality.UNKNOWN;
-        mConnectionClassManager = ConnectionClassManager.getInstance();
-        mDeviceBandwidthSampler = DeviceBandwidthSampler.getInstance();
-        mListener = new ConnectionChangedListener();
-        mConnectionClassManager.register(mListener);
-        handler = new Handler();
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                downloadImage = new DownloadImage();
-                downloadImage.execute(mURL);
+        if (!isStartedAnalizing) {
+            isStartedAnalizing = true;
+            myNetworkSpeedObserver = networkSpeedObserver;
+            mConnectionClass = ConnectionQuality.UNKNOWN;
+            mConnectionClassManager = ConnectionClassManager.getInstance();
+            mDeviceBandwidthSampler = DeviceBandwidthSampler.getInstance();
+            mListener = new ConnectionChangedListener();
+            mConnectionClassManager.register(mListener);
+            handler = new Handler();
+            runnable = new Runnable() {
+                @Override
+                public void run() {
+                    downloadImage = new DownloadImage();
+                    downloadImage.execute(mURL);
 
-            }
-        };
-        handler.postDelayed(runnable,delayMillisecons);
+                }
+            };
+            handler.postDelayed(runnable, delayMillisecons);
+        }
     }
     private static class ConnectionChangedListener
             implements ConnectionClassManager.ConnectionClassStateChangeListener {
@@ -93,6 +98,7 @@ public class NetworkUtil {
             if (bandwidthState.equals(ConnectionQuality.EXCELLENT)||bandwidthState.equals(ConnectionQuality.GOOD )){
                 handler.removeCallbacks(runnable);
                 myNetworkSpeedObserver.setAvailable(true);
+                isStartedAnalizing = false;
             }
         }
     }

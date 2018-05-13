@@ -23,6 +23,7 @@ android {
         release {
             buildConfigField "String", "BASE_URL", properties.getProperty("live_BASE_URL")
             buildConfigField "String", "API_KEY", properties.getProperty("live_API_KEY")
+            buildConfigField "String", "Base_Image_URL", properties.getProperty("Base_Image_URL")
             minifyEnabled true
             debuggable false
             useProguard true
@@ -33,6 +34,7 @@ android {
         debug {
             buildConfigField "String", "BASE_URL", properties.getProperty("BASE_URL")
             buildConfigField "String", "API_KEY", properties.getProperty("API_KEY")
+            buildConfigField "String", "Base_Image_URL", properties.getProperty("Base_Image_URL")
             minifyEnabled true
             debuggable true
             useProguard true

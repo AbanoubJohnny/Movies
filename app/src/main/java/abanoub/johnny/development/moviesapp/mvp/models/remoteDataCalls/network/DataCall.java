@@ -14,5 +14,7 @@ public interface DataCall {
 
     Single<MoviesPage<ArrayList<Movie>>> searchMovies(String search,int page);
 
-    Single<MoviesPage<ArrayList<Movie>>> getMovies(String state,int page);
+    Single<MoviesPage<ArrayList<Movie>>> getPopularMovies(int page);
+
+    Single<MoviesPage<ArrayList<Movie>>> getTopRatedMovies(int page);
 }

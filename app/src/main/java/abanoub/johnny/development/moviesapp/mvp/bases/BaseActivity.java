@@ -34,6 +34,7 @@ import abanoub.johnny.development.moviesapp.application.app.LocaleManager;
 import abanoub.johnny.development.moviesapp.application.app.MyApplication;
 import abanoub.johnny.development.moviesapp.application.dagger.Injector;
 import abanoub.johnny.development.moviesapp.application.dagger.components.ApplicationComponent;
+import abanoub.johnny.development.moviesapp.modules.splash.mvp.SplashActivity;
 import abanoub.johnny.development.moviesapp.mvp.models.local.Constants;
 import abanoub.johnny.development.moviesapp.mvp.models.local.SharedPreferencesUtils;
 import abanoub.johnny.development.moviesapp.utils.ActivityUtils;
@@ -49,7 +50,7 @@ import butterknife.Unbinder;
  * Created by Abanoub Maher on 8/18/17.
  */
 
-public abstract class BaseActivity<P extends IPresenter,M extends IViewModel> extends AppCompatActivity implements IView {
+public abstract class BaseActivity<P extends IPresenter, M extends IViewModel> extends AppCompatActivity implements IView {
     String language;
     int flagLang;
     private Unbinder mUnbinder;
@@ -76,12 +77,13 @@ public abstract class BaseActivity<P extends IPresenter,M extends IViewModel> ex
             UtiltiesMethods.setLocale(this, Constants.ENGLISH);
         }
         super.onCreate(savedInstanceState);
-        hideNavigationBar();
         setContentView(getContentView());
+        if (this instanceof SplashActivity)
+            hideNavigationBar();
         mUnbinder = ButterKnife.bind(this);
         activityUtils = new ActivityUtils(this);
-        mViewModel= setViewModel();
-        resolveDaggerDependency(Injector.INSTANCE.getAppComponent(),mViewModel);
+        mViewModel = setViewModel();
+        resolveDaggerDependency(Injector.INSTANCE.getAppComponent(), mViewModel);
         this.overridePendingTransition(R.anim.fade_in,
                 R.anim.fade_out);
         mLifecycleRegistry = new LifecycleRegistry(this);
@@ -90,18 +92,17 @@ public abstract class BaseActivity<P extends IPresenter,M extends IViewModel> ex
         onViewReady(savedInstanceState, getIntent());
     }
 
-    public void hideNavigationBar(){
+    public void hideNavigationBar() {
         View decorView = getWindow().getDecorView();
 // Hide both the navigation bar and the status bar.
 // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
 // a general rule, you should design your app to hide the status bar whenever you
 // hide the navigation bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
         decorView.setSystemUiVisibility(uiOptions);
     }
 
-    public void hideStatusBar(){
+    public void hideStatusBar() {
         View decorView = getWindow().getDecorView();
 // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
@@ -111,6 +112,7 @@ public abstract class BaseActivity<P extends IPresenter,M extends IViewModel> ex
         ActionBar actionBar = getActionBar();
         actionBar.hide();
     }
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(LocaleManager.setLocale(base));
@@ -186,6 +188,7 @@ public abstract class BaseActivity<P extends IPresenter,M extends IViewModel> ex
         if (mUnbinder != null)
             mUnbinder.unbind();
     }
+
     @NonNull
     @Override
     public Lifecycle getLifecycle() {
@@ -202,25 +205,26 @@ public abstract class BaseActivity<P extends IPresenter,M extends IViewModel> ex
 
     public abstract void onViewReady(Bundle savedInstanceState, Intent intent);
 
-    public void initiateViewModel(){
+    public void initiateViewModel() {
         mViewModel.getMessages().observe(this, this::showMessage);
         mViewModel.getIsLoading().observe(this, isShowing -> {
-            if (isShowing!=null) {
+            if (isShowing != null) {
                 if (isShowing) {
                     showMYProgressDialog("", "");
                 } else {
                     hideMyProgressDialog();
                 }
-            }
-            else {
-                Log.e("BaseActivity","is Showing equal null");
+            } else {
+                Log.e("BaseActivity", "is Showing equal null");
             }
         });
     }
+
     @Override
-    public M getmViewModel(){
+    public M getmViewModel() {
         return mViewModel;
     }
+
     @Override
     public void showLoading() {
         activityUtils.showLoading(R.string.label_loading);
@@ -451,7 +455,7 @@ public abstract class BaseActivity<P extends IPresenter,M extends IViewModel> ex
     }
 
     @Override
-    public void openFragment(int frameid, Fragment fragment,int frameLayout,Bundle args) {
+    public void openFragment(int frameid, Fragment fragment, int frameLayout, Bundle args) {
 
         fragment.setArguments(args);
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -462,7 +466,7 @@ public abstract class BaseActivity<P extends IPresenter,M extends IViewModel> ex
     }
 
     @Override
-    public void openFragment(Fragment fragment,int frameLayout) {
+    public void openFragment(Fragment fragment, int frameLayout) {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -479,19 +483,21 @@ public abstract class BaseActivity<P extends IPresenter,M extends IViewModel> ex
                 transaction.remove(oldFragment);
         }
     }
+
     @Override
-    public void showSnakeBar(@StringRes int textResId, String actionText, View.OnClickListener listener){
-        activityUtils.showSnakeBar(textResId,actionText,listener);
+    public void showSnakeBar(@StringRes int textResId, String actionText, View.OnClickListener listener) {
+        activityUtils.showSnakeBar(textResId, actionText, listener);
     }
 
 
     @Override
-    public void showSnakeBar(String message, String actionText, View.OnClickListener listener){
+    public void showSnakeBar(String message, String actionText, View.OnClickListener listener) {
 
-        activityUtils.showSnakeBar(message,actionText,listener);
+        activityUtils.showSnakeBar(message, actionText, listener);
     }
+
     @Override
-    public void hideSnakeBar(){
+    public void hideSnakeBar() {
 
         activityUtils.hideSnakeBar();
     }

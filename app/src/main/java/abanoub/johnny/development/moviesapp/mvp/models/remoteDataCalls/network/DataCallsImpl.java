@@ -41,7 +41,12 @@ public class DataCallsImpl implements DataCall {
     }
 
     @Override
-    public Single<MoviesPage<ArrayList<Movie>>> getMovies(String state, int page) {
-        return projectApi.searchMovies(state, BuildConfig.API_KEY, LocaleManager.getLanguage(MyApplication.myApplicationContext),page);
+    public Single<MoviesPage<ArrayList<Movie>>> getPopularMovies(int page) {
+        return projectApi.getPopularMovies(BuildConfig.API_KEY, LocaleManager.getLanguage(MyApplication.myApplicationContext),page);
+    }
+
+    @Override
+    public Single<MoviesPage<ArrayList<Movie>>> getTopRatedMovies( int page) {
+        return projectApi.getTopRatedMovies(BuildConfig.API_KEY, LocaleManager.getLanguage(MyApplication.myApplicationContext),page);
     }
 }

@@ -80,7 +80,7 @@ public class Movie implements Serializable {
         this.genreIds = genreIds;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

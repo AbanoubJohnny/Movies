@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project Templet</string>
+    <string name="app_name">Movies</string>
     <string name="my_infinite_service">location service</string>
     <string name="label_loading">Loading</string>
 
@@ -10,4 +10,23 @@
     <string name="try_again_later">Try again later</string>
     <string name="error_in_connection">error in connection, try again later</string>
     <string name="error_in_service">error in service, try again later</string>
+
+
+    <!--movie Card-->
+    <string name="date_title">Date</string>
+    <string name="rate_title">Rate</string>
+
+    <!--home screen-->
+    <string name="favourites_title">Favourite Movies</string>
+    <string name="search_hint">Movie name</string>
+    <string name="popural_title">Popular Movies</string>
+    <string name="toprated_title">TopRated Movies</string>
+
+
+    <!--movie details-->
+    <string name="content_description_movie_backdrop">cover photo</string>
+    <string name="movie_detail_release_date">Release date: %s</string>
+    <string name="movie_detail_overview_title">Overview</string>
+    <string name="movie_detail_videos_title">Videos</string>
+    <string name="movie_detail_reviews_title">Reviews</string>
 </resources>

@@ -2,103 +2,83 @@ package abanoub.johnny.development.moviesapp.mvp.models.entity.response.moviedet
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.support.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 @Entity(primaryKeys = {"id"}, tableName = "Movie")
-public class MovieDetails {
+public class MovieDetails implements Serializable {
 
-
+    @Ignore
+    private int status_code;
+    @Ignore
+    private String status_message;
     @SerializedName("adult")
     @ColumnInfo(name = "adult")
-    private Boolean adult = false;
+    private Boolean adult;
     @SerializedName("backdrop_path")
     @ColumnInfo(name = "backdrop_path")
-    private String backdrop_path = "";
+    private String backdropPath;
     @SerializedName("budget")
     @ColumnInfo(name = "budget")
-    private Integer budge = 0;
+    private Integer budge;
     @SerializedName("homepage")
     @ColumnInfo(name = "homepage")
-    private String homepage = "";
+    private String homepage;
     @SerializedName("id")
     @ColumnInfo(name = "id")
-    private Integer id = 0;
+    private Integer id;
     @SerializedName("imdb_id")
     @ColumnInfo(name = "imdb_id")
-    private String imdb_id = "";
+    private String imdbID;
     @SerializedName("original_language")
     @ColumnInfo(name = "original_language")
-    private String original_language = "";
+    private String originalLanguage = "";
     @SerializedName("original_title")
     @ColumnInfo(name = "original_title")
-    private String original_title = "";
+    private String originalTitle;
     @SerializedName("overview")
     @ColumnInfo(name = "overview")
-    private String overview = "";
+    private String overview;
     @SerializedName("popularity")
     @ColumnInfo(name = "popularity")
-    private double popularity = 0.0;
+    private double popularity;
     @SerializedName("poster_path")
     @ColumnInfo(name = "poster_path")
     @Nullable
-    private String poster_path = "";
+    private String posterPath;
     @SerializedName("release_date")
     @ColumnInfo(name = "release_date")
-    private String release_date = "";
+    private String releaseDate;
     @SerializedName("revenue")
     @ColumnInfo(name = "revenue")
-    private Integer revenue  =0 ;
+    private Integer revenue;
     @SerializedName("runtime")
     @ColumnInfo(name = "runtime")
-    private Integer runtime = 0;
+    private Integer runtime;
     @SerializedName("status")
     @ColumnInfo(name = "status")
-    private String status = "";
+    private String status;
     @SerializedName("tagline")
     @ColumnInfo(name = "tagline")
-    private String tagline = "";
+    private String tagline;
     @SerializedName("title")
     @ColumnInfo(name = "title")
-    private String title = "";
+    private String title;
     @SerializedName("video")
     @ColumnInfo(name = "video")
-    private Boolean video = false;
+    private Boolean video;
     @SerializedName("vote_average")
     @ColumnInfo(name = "vote_average")
-    private double vote_average  =0.0;
+    private double voteAverage;
     @SerializedName("vote_count")
     @ColumnInfo(name = "vote_count")
-    private Integer vote_count = 0;
+    private Integer voteCount;
 
     public MovieDetails(){}
-
-    public MovieDetails(Boolean adult, String backdrop_path, Integer budge, String homepage, Integer id, String imdb_id, String original_language, String original_title,
-                        String overview, double popularity, String poster_path,String release_date, Integer revenue, Integer runtime,
-                        String status, String tagline, String title, Boolean video, double vote_average, Integer vote_count) {
-        this.adult = adult;
-        this.backdrop_path = backdrop_path;
-        this.budge = budge;
-        this.homepage = homepage;
-        this.id = id;
-        this.imdb_id = imdb_id;
-        this.original_language = original_language;
-        this.original_title = original_title;
-        this.overview = overview;
-        this.popularity = popularity;
-        this.poster_path = poster_path;
-        this.release_date = release_date;
-        this.revenue = revenue;
-        this.runtime = runtime;
-        this.status = status;
-        this.tagline = tagline;
-        this.title = title;
-        this.video = video;
-        this.vote_average = vote_average;
-        this.vote_count = vote_count;
-    }
-
     public Boolean getAdult() {
         return adult;
     }
@@ -107,13 +87,14 @@ public class MovieDetails {
         this.adult = adult;
     }
 
-    public String getBackdrop_path() {
-        return backdrop_path;
+    public String getBackdropPath() {
+        return backdropPath;
     }
 
-    public void setBackdrop_path(String backdrop_path) {
-        this.backdrop_path = backdrop_path;
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
     }
+
     public Integer getBudge() {
         return budge;
     }
@@ -138,28 +119,28 @@ public class MovieDetails {
         this.id = id;
     }
 
-    public String getImdb_id() {
-        return imdb_id;
+    public String getImdbID() {
+        return imdbID;
     }
 
-    public void setImdb_id(String imdb_id) {
-        this.imdb_id = imdb_id;
+    public void setImdbID(String imdbID) {
+        this.imdbID = imdbID;
     }
 
-    public String getOriginal_language() {
-        return original_language;
+    public String getOriginalLanguage() {
+        return originalLanguage;
     }
 
-    public void setOriginal_language(String original_language) {
-        this.original_language = original_language;
+    public void setOriginalLanguage(String originalLanguage) {
+        this.originalLanguage = originalLanguage;
     }
 
-    public String getOriginal_title() {
-        return original_title;
+    public String getOriginalTitle() {
+        return originalTitle;
     }
 
-    public void setOriginal_title(String original_title) {
-        this.original_title = original_title;
+    public void setOriginalTitle(String originalTitle) {
+        this.originalTitle = originalTitle;
     }
 
     public String getOverview() {
@@ -179,21 +160,20 @@ public class MovieDetails {
     }
 
     @Nullable
-    public String getPoster_path() {
-        return poster_path;
+    public String getPosterPath() {
+        return posterPath;
     }
 
-    public void setPoster_path(@Nullable String poster_path) {
-        this.poster_path = poster_path;
+    public void setPosterPath(@Nullable String posterPath) {
+        this.posterPath = posterPath;
     }
 
-
-    public String getRelease_date() {
-        return release_date;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setRelease_date(String release_date) {
-        this.release_date = release_date;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public Integer getRevenue() {
@@ -211,6 +191,7 @@ public class MovieDetails {
     public void setRuntime(Integer runtime) {
         this.runtime = runtime;
     }
+
     public String getStatus() {
         return status;
     }
@@ -243,19 +224,35 @@ public class MovieDetails {
         this.video = video;
     }
 
-    public double getVote_average() {
-        return vote_average;
+    public double getVoteAverage() {
+        return voteAverage;
     }
 
-    public void setVote_average(double vote_average) {
-        this.vote_average = vote_average;
+    public void setVoteAverage(double voteAverage) {
+        this.voteAverage = voteAverage;
     }
 
-    public Integer getVote_count() {
-        return vote_count;
+    public Integer getVoteCount() {
+        return voteCount;
     }
 
-    public void setVote_count(Integer vote_count) {
-        this.vote_count = vote_count;
+    public void setVoteCount(Integer voteCount) {
+        this.voteCount = voteCount;
+    }
+
+    public int getStatus_code() {
+        return status_code;
+    }
+
+    public void setStatus_code(int status_code) {
+        this.status_code = status_code;
+    }
+
+    public String getStatus_message() {
+        return status_message;
+    }
+
+    public void setStatus_message(String status_message) {
+        this.status_message = status_message;
     }
 }

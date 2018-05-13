@@ -44,6 +44,8 @@
     <dimen name="mrg_90">135dp</dimen>
     <dimen name="mrg_103">154.5dp</dimen>
     <dimen name="mrg_100">150dp</dimen>
+    <dimen name="mrg_130">195dp</dimen>
+    <dimen name="mrg_160">240dp</dimen>
     <dimen name="mrg_200">300dp</dimen>
 
     <!--margins-->

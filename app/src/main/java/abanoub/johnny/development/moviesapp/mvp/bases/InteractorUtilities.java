@@ -28,8 +28,14 @@ public class InteractorUtilities {
                 if (body != null) {
                     message = body.string();
                     Gson gson = new Gson();
-                    MyErrores response = gson.fromJson(message, MyErrores.class);
-                    errors.add(ExceptionHandler.handleException(response));
+                    try {
+                        MyErrores response = gson.fromJson(message, MyErrores.class);
+                        errors.add(ExceptionHandler.handleException(response));
+                    }catch (Exception e1){
+                        MyErrores error = new MyErrores();
+                        error.setStatus_message(message);
+                        errors.add(ExceptionHandler.handleException(error));
+                    }
                 }else {
                     errors.add(ExceptionHandler.handleException(e));
                 }
