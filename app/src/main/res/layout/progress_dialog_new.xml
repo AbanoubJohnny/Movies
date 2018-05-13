@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/NewDialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/animated_photo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mrg_80"
+        android:src="@drawable/loading" />
+
+    <abanoub.johnny.development.moviesapp.utils.customeviews.textview.BoldTextView
+        android:id="@+id/progress_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/animated_photo"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/large_margine"
+        android:gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:textSize="@dimen/medium_text"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<resources>
+    <!--glaxy nexus /-> nexus 6-->
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">64dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--text sizes-->
+    <dimen name="text_8">8sp</dimen>
+    <dimen name="text_10">10sp</dimen>
+    <dimen name="text_11">11sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_13">13sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <!--text sizes-->
+
+
+
+    <!--default values-->
+    <dimen name="medium_text">15sp</dimen>
+    <dimen name="large_text">20sp</dimen>
+    <dimen name="small_margine">10dp</dimen>
+    <dimen name="medium_margine">15dp</dimen>
+    <dimen name="large_margine">20dp</dimen>
+    <dimen name="fast_scroll_overlay_text_size">100dp</dimen>
+    <!--default values-->
+
+
+
+    <!--margins-->
+    <dimen name="mrg_5">5dp</dimen>
+    <dimen name="mrg_8">8dp</dimen>
+    <dimen name="mrg_10">10dp</dimen>
+    <dimen name="mrg_15">15dp</dimen>
+    <dimen name="mrg_17">17dp</dimen>
+    <dimen name="mrg_20">20dp</dimen>
+    <dimen name="mrg_25">25dp</dimen>
+    <dimen name="mrg_30">30dp</dimen>
+    <dimen name="mrg_40">40dp</dimen>
+    <dimen name="mrg_50">50dp</dimen>
+    <dimen name="mrg_80">80dp</dimen>
+    <dimen name="mrg_82">82dp</dimen>
+    <dimen name="mrg_90">90dp</dimen>
+    <dimen name="mrg_103">103dp</dimen>
+    <dimen name="mrg_100">100dp</dimen>
+    <dimen name="mrg_200">200dp</dimen>
+
+    <!--margins-->
+
+
+    <!--padding-->
+    <dimen name="pdg_2">2dp</dimen>
+    <dimen name="pdg_5">5dp</dimen>
+    <dimen name="pdg_8">8dp</dimen>
+    <dimen name="pdg_10">10dp</dimen>
+    <dimen name="pdg_15">15dp</dimen>
+    <dimen name="pdg_20">20dp</dimen>
+    <dimen name="pdg_25">25dp</dimen>
+    <dimen name="pdg_30">30dp</dimen>
+    <!--padding-->
+
+</resources>

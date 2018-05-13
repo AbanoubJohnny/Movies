@@ -1,0 +1,126 @@
+apply plugin: 'com.android.application'
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "abanoub.johnny.development.moviesapp"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            buildConfigField "String", "BASE_URL", properties.getProperty("live_BASE_URL")
+            buildConfigField "String", "API_KEY", properties.getProperty("live_API_KEY")
+            minifyEnabled true
+            debuggable false
+            useProguard true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree('proguard').asList().toArray()
+        }
+        debug {
+            buildConfigField "String", "BASE_URL", properties.getProperty("BASE_URL")
+            buildConfigField "String", "API_KEY", properties.getProperty("API_KEY")
+            minifyEnabled true
+            debuggable true
+            useProguard true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree('proguard').asList().toArray()
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    //needed libraries
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    // android support libraries
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:support-vector-drawable:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:animated-vector-drawable:$rootProject.ext.supportLibraryVersion"
+
+    //main libraries
+    implementation "com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion"
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.7'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation "com.google.dagger:dagger:$rootProject.ext.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.dagger2Version"
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'javax.inject:javax.inject:1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation 'javax.annotation:javax.annotation-api:1.2'
+    implementation 'com.romandanylyk:pageindicatorview:0.1.2'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.11'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'me.grantland:autofittextview:0.2.1'
+    implementation 'com.jakewharton.timber:timber:4.5.1'
+
+    //Todo 2/16/2018: need to be removed
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    implementation 'com.patloew.rxlocation:rxlocation:1.0.4'
+
+    //phone validation library
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.8.11'
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+// ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:$rootProject.ext.lifecycle_version"
+    // alternatively - just ViewModel
+    implementation "android.arch.lifecycle:viewmodel:$rootProject.ext.lifecycle_version"
+    // use -ktx for Kotlin
+    // alternatively - just LiveData
+    implementation "android.arch.lifecycle:livedata:$rootProject.ext.lifecycle_version"
+    // alternatively - Lifecycles only (no ViewModel or LiveData).
+    //     Support library depends on this lightweight import
+    implementation "android.arch.lifecycle:runtime:$rootProject.ext.lifecycle_version"
+
+    // alternately - if using Java8, use the following instead of compiler
+    implementation "android.arch.lifecycle:common-java8:$rootProject.ext.lifecycle_version"
+
+    // optional - ReactiveStreams support for LiveData
+    implementation "android.arch.lifecycle:reactivestreams:$rootProject.ext.lifecycle_version"
+
+    // optional - Test helpers for LiveData
+    testImplementation "android.arch.core:core-testing:$rootProject.ext.lifecycle_version"
+
+    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    testImplementation "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
+
+    //Room
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+
+    //tool to know internet speed
+    compile 'com.facebook.network.connectionclass:connectionclass:1.0.1'
+}

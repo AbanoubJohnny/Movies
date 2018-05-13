@@ -1,0 +1,64 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">96dp</dimen>
+    <dimen name="activity_vertical_margin">24dp</dimen>
+
+    <!--text sizes-->
+    <dimen name="text_8">12sp</dimen>
+    <dimen name="text_10">15sp</dimen>
+    <dimen name="text_11">16.5sp</dimen>
+    <dimen name="text_12">18sp</dimen>
+    <dimen name="text_13">19.5sp</dimen>
+    <dimen name="text_14">21sp</dimen>
+    <dimen name="text_16">24sp</dimen>
+    <dimen name="text_20">30sp</dimen>
+    <dimen name="text_24">36sp</dimen>
+    <!--text sizes-->
+
+
+
+    <!--default values-->
+    <dimen name="medium_text">22.5sp</dimen>
+    <dimen name="large_text">30sp</dimen>
+    <dimen name="small_margine">15dp</dimen>
+    <dimen name="medium_margine">22.5dp</dimen>
+    <dimen name="large_margine">30dp</dimen>
+    <dimen name="fast_scroll_overlay_text_size">150dp</dimen>
+    <!--default values-->
+
+
+
+    <!--margins-->
+    <dimen name="mrg_5">7.5dp</dimen>
+    <dimen name="mrg_8">12dp</dimen>
+    <dimen name="mrg_10">15dp</dimen>
+    <dimen name="mrg_15">22.5dp</dimen>
+    <dimen name="mrg_17">25.5dp</dimen>
+    <dimen name="mrg_20">30dp</dimen>
+    <dimen name="mrg_25">37.5dp</dimen>
+    <dimen name="mrg_30">45dp</dimen>
+    <dimen name="mrg_40">60dp</dimen>
+    <dimen name="mrg_50">75dp</dimen>
+    <dimen name="mrg_80">120dp</dimen>
+    <dimen name="mrg_82">123dp</dimen>
+    <dimen name="mrg_90">135dp</dimen>
+    <dimen name="mrg_103">154.5dp</dimen>
+    <dimen name="mrg_100">150dp</dimen>
+    <dimen name="mrg_200">300dp</dimen>
+
+    <!--margins-->
+
+
+    <!--padding-->
+    <dimen name="pdg_2">3dp</dimen>
+    <dimen name="pdg_5">7.5dp</dimen>
+    <dimen name="pdg_8">12dp</dimen>
+    <dimen name="pdg_10">15dp</dimen>
+    <dimen name="pdg_15">22.5dp</dimen>
+    <dimen name="pdg_20">30dp</dimen>
+    <dimen name="pdg_25">37.5dp</dimen>
+    <dimen name="pdg_30">45dp</dimen>
+    <!--padding-->
+
+
+</resources>

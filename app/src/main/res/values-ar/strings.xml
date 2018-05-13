@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Project Templet</string>
+    <string name="my_infinite_service">location service</string>
+    <string name="label_loading">Loading</string>
+
+
+    <!--error handeler messag-->
+    <string name="check_internet_Connection">تحقق من اتصال الإنترنت</string>
+    <string name="weak_network_connection">Connection weak, try again later</string>
+    <string name="try_again_later">Try again later</string>
+    <string name="error_in_connection">error in connection, try again later</string>
+    <string name="error_in_service">error in service, try again later</string>
+</resources>
