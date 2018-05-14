@@ -32,6 +32,10 @@
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".modules.movie.mvp.MovieActivity"
             android:theme="@style/AppTheme.noActionbar"/>
+        <activity android:name=".modules.searchresults.mvp.SearchResultsActivity"
+            android:theme="@style/AppTheme.noActionbar"
+            android:configChanges="keyboardHidden"
+            android:windowSoftInputMode="stateHidden"/>
 
 
     </application>

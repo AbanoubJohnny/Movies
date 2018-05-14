@@ -39,4 +39,5 @@ public interface Constants {
     //Movies states//////////////
     String MovieDetails = "MovieDetails";
     String MovieToShow = "MovieToShow";
+    String SearchString = "SearchString";
 }

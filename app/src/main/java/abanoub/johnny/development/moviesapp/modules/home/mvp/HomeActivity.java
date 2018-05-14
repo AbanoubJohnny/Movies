@@ -8,8 +8,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +27,7 @@ import abanoub.johnny.development.moviesapp.modules.home.mvp.adapters.FavouriteM
 import abanoub.johnny.development.moviesapp.modules.home.mvp.adapters.MoviesAdapter;
 import abanoub.johnny.development.moviesapp.modules.home.mvp.contract.HomeContract;
 import abanoub.johnny.development.moviesapp.modules.movie.mvp.MovieActivity;
+import abanoub.johnny.development.moviesapp.modules.searchresults.mvp.SearchResultsActivity;
 import abanoub.johnny.development.moviesapp.mvp.bases.BaseActivity;
 import abanoub.johnny.development.moviesapp.mvp.models.entity.response.moviedetails.MovieDetails;
 import abanoub.johnny.development.moviesapp.mvp.models.entity.response.moviespage.Movie;
@@ -50,6 +55,9 @@ public class HomeActivity extends BaseActivity<HomePresenter, HomeViewModel> imp
     RecyclerView favouritesMoviesRecyclerview;
     @BindView(R.id.favourites_linearlayout)
     LinearLayout favouritesMoviesLinearlayout;
+
+    @BindView(R.id.search_edittext)
+    EditText searchEdittext;
 
     MoviesAdapter topRatedAdapter,popularAdapter;
     FavouriteMoviesAdapter favouritesAdapter;
@@ -148,6 +156,21 @@ public class HomeActivity extends BaseActivity<HomePresenter, HomeViewModel> imp
                     favouritesAdapter.notifyDataSetChanged();
                     favouritesMoviesLinearlayout.setVisibility(View.GONE);
                 }
+            }
+        });
+        searchEdittext.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+
+                    Bundle args = new Bundle();
+                    args.putSerializable(Constants.SearchString,v.getText().toString());
+                    Intent intent = getIntent(SearchResultsActivity.class);
+                    intent.putExtras(args);
+                    startActivity(intent);
+                    return true;
+                }
+                return false;
             }
         });
     }

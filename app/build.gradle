@@ -124,5 +124,7 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 
     //tool to know internet speed
-    compile 'com.facebook.network.connectionclass:connectionclass:1.0.1'
+    implementation 'com.facebook.network.connectionclass:connectionclass:1.0.1'
+
+    implementation 'xyz.danoz:recyclerviewfastscroller:0.1.3'
 }

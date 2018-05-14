@@ -26,4 +26,7 @@
     <string name="movie_detail_overview_title">Overview</string>
     <string name="movie_detail_videos_title">Videos</string>
     <string name="movie_detail_reviews_title">Reviews</string>
+
+    <!--results page-->
+    <string name="show_more">Show more</string>
 </resources>

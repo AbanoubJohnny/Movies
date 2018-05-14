@@ -63,7 +63,7 @@ public class HomeViewModel extends BaseViewModel<HomeContract.IHomeInteractor, H
                 popularMovies.addAll(movies);
                 livePopularMovies.postValue(popularMovies);
             } else {
-                shwoMessage("no branches");
+                shwoMessage("no movies");
             }
         }
 
@@ -111,7 +111,7 @@ public class HomeViewModel extends BaseViewModel<HomeContract.IHomeInteractor, H
                 topratedMovies.addAll(movies);
                 livetopratedMovies.postValue(popularMovies);
             } else {
-                shwoMessage("no branches");
+                shwoMessage("no movies");
             }
         }
 
