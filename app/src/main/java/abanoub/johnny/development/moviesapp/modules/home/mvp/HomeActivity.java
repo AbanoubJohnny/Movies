@@ -82,8 +82,6 @@ public class HomeActivity extends BaseActivity<HomePresenter, HomeViewModel> imp
                 .build();
         homeComponent.inject(this);
         homeComponent.inject(viewModel);
-
-
     }
     @Override
     public void onViewReady(Bundle savedInstanceState, Intent intent) {
@@ -152,6 +150,7 @@ public class HomeActivity extends BaseActivity<HomePresenter, HomeViewModel> imp
                     }
                 }
                 else {
+                    setupFavouritesRecyclerView();
                     myFavouriteMovies.clear();
                     favouritesAdapter.notifyDataSetChanged();
                     favouritesMoviesLinearlayout.setVisibility(View.GONE);
