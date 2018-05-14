@@ -40,13 +40,13 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/search_results_recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:foregroundGravity="center"
         app:fastScrollEnabled="false"
         app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
         app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"
-        android:paddingStart="@dimen/mrg_20"
-        android:paddingEnd="@dimen/mrg_20"
+        android:paddingStart="@dimen/mrg_10"
+        android:paddingEnd="@dimen/mrg_10"
         android:layout_below="@id/actionbar"/>
 </RelativeLayout>

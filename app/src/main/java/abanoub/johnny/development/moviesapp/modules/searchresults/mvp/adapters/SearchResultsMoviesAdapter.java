@@ -13,15 +13,15 @@ import java.util.List;
 import abanoub.johnny.development.moviesapp.R;
 import abanoub.johnny.development.moviesapp.modules.home.mvp.MovieCardsCallBack;
 import abanoub.johnny.development.moviesapp.mvp.models.entity.response.moviespage.Movie;
-import abanoub.johnny.development.moviesapp.mvp.models.viewholders.MovieCardViewHolderNoCaching;
+import abanoub.johnny.development.moviesapp.mvp.models.viewholders.MovieCardViewHolder;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MovieCardViewHolderNoCaching> {
+public class SearchResultsMoviesAdapter extends RecyclerView.Adapter<MovieCardViewHolder> {
 
     private List<Movie> moviesList = new ArrayList<>();
     private Context mContext;
     private MovieCardsCallBack movieCardsCallBack;
 
-    public MoviesAdapter(List<Movie> movies, Context context, MovieCardsCallBack movieCardsCallBack){
+    public SearchResultsMoviesAdapter(List<Movie> movies, Context context, MovieCardsCallBack movieCardsCallBack){
         this.moviesList = movies;
         this.mContext = context;
         this.movieCardsCallBack = movieCardsCallBack;
@@ -29,15 +29,15 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieCardViewHolderNoCac
 
     @NonNull
     @Override
-    public MovieCardViewHolderNoCaching onCreateViewHolder(@NonNull ViewGroup parent,
+    public MovieCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
                                                   int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.movie_card, parent, false);
-        return new MovieCardViewHolderNoCaching(view,mContext);
+                .inflate(R.layout.search_result_movie_card, parent, false);
+        return new MovieCardViewHolder(view,mContext);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MovieCardViewHolderNoCaching holder, final int listPosition) {
+    public void onBindViewHolder(@NonNull final MovieCardViewHolder holder, final int listPosition) {
         Movie movie  = moviesList.get(listPosition);
         holder.bind(movie);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

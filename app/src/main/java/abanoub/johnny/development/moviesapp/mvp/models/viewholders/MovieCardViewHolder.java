@@ -38,8 +38,8 @@ public class MovieCardViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(Movie movie){
         if (movie!=null) {
-            Glide.with(mContext).load(BuildConfig.Base_Image_URL+movie.getPosterPath())
-                    .diskCacheStrategy(DiskCacheStrategy.RESULT).placeholder(R.color.colorPrimaryDark).into(movieImageView);
+            Glide.with(mContext).load(BuildConfig.Base_Image_URL+movie.getPosterPath()).asBitmap()
+                    .diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.color.off_white).into(movieImageView);
             movieNameText.setText(movie.getTitle());
             movieRateText.setText(movie.getVoteAverage()+"");
             movieDateText.setText(movie.getReleaseDate());
@@ -51,7 +51,7 @@ public class MovieCardViewHolder extends RecyclerView.ViewHolder {
     public void bind(MovieDetails movie){
         if (movie!=null) {
             Glide.with(mContext).load(BuildConfig.Base_Image_URL+movie.getPosterPath())
-                    .diskCacheStrategy(DiskCacheStrategy.RESULT).placeholder(R.color.colorPrimaryDark).into(movieImageView);
+                    .diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.color.off_white).into(movieImageView);
             movieNameText.setText(movie.getTitle());
             movieRateText.setText(movie.getVoteAverage()+"");
             movieDateText.setText(movie.getReleaseDate());

@@ -47,11 +47,17 @@ public class SearchResultsViewModel extends BaseViewModel<SearchResultsContract.
         return resultMovies;
     }
 
-    private MutableLiveData<List<Movie>> liveResultMovies = new MutableLiveData<>();
+    private MutableLiveData<List<Movie>> liveResultMovies ;
 
     //popular movies////////////////////////////////////
     @Override
-    public LiveData<List<Movie>> getResults() {
+    public LiveData<List<Movie>> getResultsObserver() {
+        return liveResultMovies= new MutableLiveData<>();
+    }
+
+    @Override
+    public void getResults(){
+
         if (page<=totalpages) {
             if (resultMovies == null || resultMovies.isEmpty()) {
                 resultMovies = new ArrayList<>();
@@ -62,7 +68,6 @@ public class SearchResultsViewModel extends BaseViewModel<SearchResultsContract.
         else {
             shwoMessage("no more");
         }
-        return liveResultMovies;
     }
 
     private InteractorCallback<MoviesPage<ArrayList<Movie>>> getPopularCallback = new InteractorCallback<MoviesPage<ArrayList<Movie>>>() {
@@ -74,7 +79,7 @@ public class SearchResultsViewModel extends BaseViewModel<SearchResultsContract.
                     page++;
                 if (moviesPage.getResults()!=null&&!moviesPage.getResults().isEmpty()){
                     resultMovies.addAll(moviesPage.getResults());
-                    liveResultMovies.postValue(resultMovies);
+                    liveResultMovies.postValue(moviesPage.getResults());
                 }
             } else {
                 shwoMessage("no movies");

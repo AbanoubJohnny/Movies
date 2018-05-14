@@ -32,7 +32,7 @@ public class FavouriteMoviesAdapter extends RecyclerView.Adapter<MovieCardViewHo
     public MovieCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
                                                   int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.movie_card, parent, false);
+                .inflate(R.layout.home_movie_card, parent, false);
         return new MovieCardViewHolder(view,mContext);
     }
 

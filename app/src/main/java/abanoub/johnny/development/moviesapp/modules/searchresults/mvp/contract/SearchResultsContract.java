@@ -44,7 +44,10 @@ public interface SearchResultsContract {
         List<Movie> getResultMovies();
 
         //popular movies////////////////////////////////////
-        LiveData<List<Movie>> getResults();
+        void getResults();
+
+        //popular movies////////////////////////////////////
+        LiveData<List<Movie>> getResultsObserver();
         //put here all methods to get all livedata to the view   
     }
 

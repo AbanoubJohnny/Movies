@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import abanoub.johnny.development.moviesapp.BuildConfig;
 import abanoub.johnny.development.moviesapp.R;
@@ -112,8 +113,10 @@ public class MovieActivity extends BaseActivity<MoviePresenter, MovieViewModel> 
     public void bind() {
         if (movieDateextview != null) {
             container_relativelayout.setVisibility(View.VISIBLE);
-            Glide.with(this).load(BuildConfig.Base_Image_URL + movieDetails.getBackdropPath()).placeholder(R.color.colorPrimaryDark).into(movieCoverImageImageview);
-            Glide.with(this).load(BuildConfig.Base_Image_URL + movieDetails.getPosterPath()).placeholder(R.color.colorPrimaryDark).into(movieImageImageview);
+            Glide.with(this).load(BuildConfig.Base_Image_URL + movieDetails.getBackdropPath())
+                    .diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.color.off_white).into(movieCoverImageImageview);
+            Glide.with(this).load(BuildConfig.Base_Image_URL + movieDetails.getPosterPath())
+                    .diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.color.off_white).into(movieImageImageview);
             movieNameTextview.setText(movieDetails.getTitle());
             movieRateTextview.setText(movieDetails.getVoteAverage() + "");
             movieDateextview.setText(movieDetails.getReleaseDate());

@@ -18,11 +18,11 @@ import java.util.List;
 import abanoub.johnny.development.moviesapp.R;
 import abanoub.johnny.development.moviesapp.application.dagger.components.ApplicationComponent;
 import abanoub.johnny.development.moviesapp.modules.home.mvp.MovieCardsCallBack;
-import abanoub.johnny.development.moviesapp.modules.home.mvp.adapters.MoviesAdapter;
 import abanoub.johnny.development.moviesapp.modules.movie.mvp.MovieActivity;
 import abanoub.johnny.development.moviesapp.modules.searchresults.dagger.DaggerSearchResultsComponent;
 import abanoub.johnny.development.moviesapp.modules.searchresults.dagger.SearchResultsComponent;
 import abanoub.johnny.development.moviesapp.modules.searchresults.dagger.SearchResultsModule;
+import abanoub.johnny.development.moviesapp.modules.searchresults.mvp.adapters.SearchResultsMoviesAdapter;
 import abanoub.johnny.development.moviesapp.modules.searchresults.mvp.contract.SearchResultsContract;
 import abanoub.johnny.development.moviesapp.mvp.bases.BaseActivity;
 import abanoub.johnny.development.moviesapp.mvp.models.entity.response.moviedetails.MovieDetails;
@@ -44,7 +44,7 @@ public class SearchResultsActivity extends BaseActivity<SearchResultsPresenter, 
     @BindView(R.id.search_results_recycler)
     RecyclerView searchResultsMoviesRecyclerview;
 
-    MoviesAdapter mAdapter;
+    SearchResultsMoviesAdapter mAdapter;
     String searchString;
 
     List<Movie> resultMovies;
@@ -77,6 +77,7 @@ public class SearchResultsActivity extends BaseActivity<SearchResultsPresenter, 
 
 
         Bundle bundle = intent.getExtras();
+        showResults();
         if (bundle != null && bundle.containsKey(Constants.SearchString)) {
             searchString = bundle.getString(Constants.SearchString);
         }
@@ -90,14 +91,14 @@ public class SearchResultsActivity extends BaseActivity<SearchResultsPresenter, 
                 setupResultsRecyclerView();
             }
         } else {
-            showResults();
+            getmViewModel().getResults();
         }
         toolbarTtle.setText(searchString);
 
     }
 
     private void showResults() {
-        getmViewModel().getResults().observe(this, new Observer<List<Movie>>() {
+        getmViewModel().getResultsObserver().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(@Nullable List<Movie> movies) {
                 if (resultMovies == null || resultMovies.isEmpty()) {
@@ -106,7 +107,7 @@ public class SearchResultsActivity extends BaseActivity<SearchResultsPresenter, 
                     setupResultsRecyclerView();
                 } else {
                     int oldCount = resultMovies.size();
-                    resultMovies.addAll(movies);
+                            resultMovies.addAll(movies);
                     mAdapter.notifyItemRangeChanged(oldCount, resultMovies.size());
                 }
             }
@@ -119,7 +120,7 @@ public class SearchResultsActivity extends BaseActivity<SearchResultsPresenter, 
         }
 
         if (mAdapter == null) {
-            mAdapter = new MoviesAdapter(resultMovies, this, movieCardsCallBack);
+            mAdapter = new SearchResultsMoviesAdapter(resultMovies, this, movieCardsCallBack);
         }
 
         if (searchResultsMoviesRecyclerview.getAdapter() == null) {
@@ -138,7 +139,7 @@ public class SearchResultsActivity extends BaseActivity<SearchResultsPresenter, 
 
                 if (!recyclerView.canScrollVertically(1)) {
                     if (getmViewModel().isMore())
-                        showResults();
+                        getmViewModel().getResults();
                 }
 
             }
