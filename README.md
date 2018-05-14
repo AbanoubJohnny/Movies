@@ -1,7 +1,7 @@
 # Movies
 app to search for movies and save them in favourites to be available while no internet connection 
 
-#Work on Development1 branch
+#Work on development_1 branch
 
 #Add this to locale.proparties:  
 
