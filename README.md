@@ -14,6 +14,5 @@ live_BASE_URL="https://api.themoviedb.org/3/"
 
 #Things to checked 
 
-rotation in all screens , 
-load data when internet return , 
+rotation in all screens ,
 app size 
