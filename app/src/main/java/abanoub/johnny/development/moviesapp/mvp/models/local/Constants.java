@@ -7,6 +7,7 @@ package abanoub.johnny.development.moviesapp.mvp.models.local;
 
 public interface Constants {
 
+    String Application = "Application";
     String PHONE_NUMBER = "PHONE_NUMBER";
     String ARABIC = "ar-AE";
     String ENGLISH = "en-US";

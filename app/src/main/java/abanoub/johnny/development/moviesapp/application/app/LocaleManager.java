@@ -22,13 +22,14 @@ public class LocaleManager {
     }
 
     public static Context setNewLocale(Context c, String language) {
-        persistLanguage(c, language);
+
         return updateResources(c, language);
     }
 
     public static String getLanguage(Context c) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(c);
-        return sharedPreferences.getString(Constants.LANGUAGE, Constants.ENGLISH);
+        String result = sharedPreferences.getString(Constants.LANGUAGE, Constants.ENGLISH);
+        return result;
     }
 
     public static Context persistLanguage(Context c, String language) {
@@ -44,14 +45,16 @@ public class LocaleManager {
 
 
         Resources res = context.getResources();
-        Configuration config = new Configuration(res.getConfiguration());
-        if (Build.VERSION.SDK_INT < 17) {
-            config.locale = locale;
-            res.updateConfiguration(config, res.getDisplayMetrics());
-        } else {
-            config.setLocale(locale);
-            context = context.createConfigurationContext(config);
-            res.updateConfiguration(config, res.getDisplayMetrics());
+        if (res!=null) {
+            Configuration config = new Configuration(res.getConfiguration());
+            if (Build.VERSION.SDK_INT < 17) {
+                config.locale = locale;
+                res.updateConfiguration(config, res.getDisplayMetrics());
+            } else {
+                config.setLocale(locale);
+                context = context.createConfigurationContext(config);
+                res.updateConfiguration(config, res.getDisplayMetrics());
+            }
         }
         return context;
     }
