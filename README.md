@@ -15,3 +15,23 @@ live_BASE_URL="https://api.themoviedb.org/3/"
 #Things to checked 
 
 rotation in all screens , app size
+
+
+ <com.example.abanoubjohnny.ticketview.TicketViewOld
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/transparent"
+        app:backgroundColor="@android:color/white"
+        app:dividerColor="@color/colorAccent"
+        app:dividerWidth="2dp"
+        app:borderColor="@color/colorPrimaryDark"
+        app:orientation="horizontal"
+        app:scallopRadius="10dp"
+        app:showBorder="true"
+        app:showDivider="true"
+        app:dividerType="dash"
+        app:cornerType="rounded"
+        app:ticketElevation="14dp">
+
+		
